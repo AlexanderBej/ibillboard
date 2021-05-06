@@ -21,6 +21,8 @@ export class LayoutComponent implements OnInit {
   allEmployees = EMPLOYEES
   searchText = ''; // used for search input
 
+  showReq: boolean = false
+
   // filetr pipe used for search
   filterPipe: FilterEmployeePipe = new FilterEmployeePipe()
   filteredEmployees: any[] = [] 

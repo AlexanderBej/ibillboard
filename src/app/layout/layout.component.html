@@ -68,3 +68,34 @@
     </div>
 
 </div>
+
+<div class="requirements-container">
+
+    <button class="show-req" mat-stroked-button color="accent" (click)="showReq = !showReq">Show requirements</button>
+    <div class="requirements" *ngIf="showReq">
+        <p>Create a web application with the list of the employees by using angular 2. If you are more friendly with
+            some other framework, please use it.</p>
+        <h4>UseCases:</h4>
+        <ul>
+            <li>we need a list of all employees (nice to have: with search)</li>
+            <li>we can hire a new employee and we need to register these properties:</li>
+            <ul>
+                <li>name</li>
+                <li>surname</li>
+                <li>work position (we can choose from an enum, which is available on API method GET, on URL:
+                    http://ibillboard.com/api/positions)</li>
+                <li> date of birth</li>
+            </ul>
+            <li>we can change name of employee</li>
+            <li>employee can change work position</li>
+            <li>employee can leave the company</li>
+        </ul>
+        <h4>Tips:</h4>
+        <ul>
+            <li>UI must be user-friendly and easy to control (try to to use it like user)</li>
+            <li>create unit tests, if you know how</li>
+            <li>think about clean code and reusing code</li>
+            <li>someone will try to run your app, think on this</li>
+        </ul>
+    </div>
+</div>
