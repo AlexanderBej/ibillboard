@@ -1,0 +1,42 @@
+<div class="add-modal">
+  <div class="modal-header">
+    <h4 class="modal-title almac-header" *ngIf="employeeToEdit == undefined">Hire new employee</h4>
+    <h4 class="modal-title almac-header" *ngIf="employeeToEdit != undefined && isEditedByAdmin">Edit employee data</h4>
+    <h4 class="modal-title almac-header" *ngIf="employeeToEdit != undefined && !isEditedByAdmin">Change position</h4>
+    <button mat-mini-fab color="primary" (click)="addDialog.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="product-form" [formGroup]="employeeForm">
+      <mat-form-field appearance="outline" color="primary" class="name-field field">
+        <mat-label>Name</mat-label>
+        <input matInput class="field-input" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="primary" class="surname-field field">
+        <mat-label>Surname</mat-label>
+        <input matInput class="field-input" formControlName="surname" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="position-field field">
+        <mat-label>Work Position</mat-label>
+        <mat-select formControlName="position">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let pos of allWorkPositions" [value]="pos">
+            {{pos}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="position?.hasError('required')">Please choose a work position</mat-error>
+        <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="date-field field">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput class="field-input" [matDatepicker]="picker" formControlName="birth" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button mat-stroked-button color="primary" class="save-btn" (click)="hireNewEmployee()">Save</button>
+  </div>
+</div>

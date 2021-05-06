@@ -1,0 +1,87 @@
+.main-container {
+    padding: 5rem;
+}
+
+.search-field {
+    display: block;
+    width: 300px;
+    float: right;
+    margin-bottom: -1em;
+}
+
+
+
+
+.employee-table, .table-top {
+    width: 80%;
+    margin: auto;
+}
+
+.table-top {
+    display: flow-root;
+    position: relative;
+
+    .hire-btn {
+        position: absolute;
+        bottom: 5px;
+    }
+}
+
+.ibillboard-icon {
+    font-size: 15px;
+    margin-left: 5px;
+    color: #828282;
+}
+
+.my-table-element {
+    border: 1px solid #828282;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.id-column {
+    width: 70px;
+    padding-right: 24px;
+}
+
+.name-column {
+    width: 250px;
+}
+
+.wp-column {
+    width: 200px;
+}
+
+.wp-btn-logged:hover {
+    cursor: pointer;
+}
+
+.date-column {
+    width: 180px ;
+}
+
+.actions-column {
+    width: 90px;
+}
+
+#actions-header {
+    padding-left: 16px;
+}
+
+.employee-table {
+    th {
+        background-color: #172A3A;
+        color: whitesmoke;
+    }
+
+    tr.mat-row:hover {
+        background-color: #508991a3;
+    }
+
+}
+
+/*
+ *  color scheme: 
+ *  primay: 508991
+ *  secondary: 172A3A
+*/

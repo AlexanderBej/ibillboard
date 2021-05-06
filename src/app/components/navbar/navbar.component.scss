@@ -1,0 +1,57 @@
+.navbar-custom {
+    display: flex;
+    min-height: 80px;
+    
+}
+
+
+.navbar-container {
+    display: inherit;
+    width: 100%;
+    background-color: #172A3A;
+    
+    a {
+        width: fit-content;
+        color: whitesmoke;
+        font-size: 25px;
+        display: block;
+        margin: auto;
+    
+        &:hover {
+            text-decoration: unset;
+        }
+    }
+    
+    .dropdown-btn {
+        top: 20px;
+        right: 30px;
+        height: 35px;
+    }
+
+    .login-btn {
+        right: 15px;
+        height: 35px;
+        top: 20px;
+    }
+}
+
+.dropdown-custom {
+    background-color: #e0f2f5;
+    padding: 0;
+
+    .user-item {
+        padding: 0.5rem 1.5rem;
+        
+        &:hover {
+            cursor: pointer;
+            background-color: #172a3a7d;
+        }
+    }
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+
+

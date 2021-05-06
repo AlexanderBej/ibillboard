@@ -1,0 +1,31 @@
+<nav class="navbar-custom">
+    <div class="navbar-container">
+        <a href="">
+            <span class="site-name">iBILLBOARD</span>
+        </a>
+
+        <div *ngIf="isUserLogged" ngbDropdown class="d-inline-block">
+            <button mat-flat-button color="primary" class="dropdown-btn" (click)="updateUser()" id="dropdownBasic1" ngbDropdownToggle>User Details
+                <span class="material-icons">
+                    account_circle
+                    </span>
+            </button>
+            <div ngbDropdownMenu class="dropdown-custom" aria-labelledby="dropdownBasic1" *ngIf="isAdminLogged">
+              <span ngbDropdownItem class="user-item">Username: <strong>admin</strong></span>
+              <span ngbDropdownItem class="user-item">Position: <strong>admin</strong></span>
+            </div>
+            <div ngbDropdownMenu class="dropdown-custom" aria-labelledby="dropdownBasic1" *ngIf="user != undefined">
+                <span ngbDropdownItem class="user-item">Username: <strong>{{user.name}} {{user.surname}}</strong></span>
+                <span ngbDropdownItem class="user-item">Position: <strong>{{user.workPosition}}</strong></span>
+              </div>
+          </div>
+
+        <button *ngIf="!isUserLogged" mat-flat-button color="primary" class="login-btn" (click)="openLoginDialog()">Login
+            <span class="material-icons">login</span>
+        </button>
+
+        <button *ngIf="isUserLogged" mat-flat-button color="primary" class="login-btn" (click)="logout()">Logout
+            <span class="material-icons">logout</span>
+        </button>
+    </div>
+</nav>

@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+<div class="main-container">
+    <app-toast></app-toast>
+
+    <div class="table-top">
+        <button *ngIf="isAdminLogged" mat-stroked-button color="primary" class="hire-btn" (click)="addEmployee()">Hire new employee
+            <span class="material-icons">person_add_alt</span>
+        </button>
+        <mat-form-field appearance="standard" class="search-field">
+            <mat-label>Search for employee</mat-label>
+            <input matInput [(ngModel)]="searchText" (ngModelChange)="modelChangeFn($event)"
+                placeholder="Enter name or surname to search">
+            <span class="material-icons" style="color: #508991;" matSuffix>person_search</span>
+        </mat-form-field>
+    </div>
+    <div class="ibillboard-table">
+        <table mat-table [dataSource]="dataSource" class="employee-table mat-elevation-z8">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell class="id-column" *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element" class="name-column"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="surname">
+                <th mat-header-cell *matHeaderCellDef> Surname </th>
+                <td mat-cell *matCellDef="let element" class="name-column"> {{element.surname}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> Work Position </th>
+                <td mat-cell class="wp-column" *matCellDef="let element">
+                    <span *ngIf="loggedEmployee != undefined && loggedEmployee.username === element.username"
+                        class="wp-btn-logged" (click)="editPosition(element)">{{element.workPosition}}</span>
+                    <span *ngIf="loggedEmployee == undefined || loggedEmployee.username != element.username"
+                        class="wp-btn-unknown">{{element.workPosition}}</span>
+                </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
+                <td mat-cell class="date-column" *matCellDef="let element"> {{element.datOfBirth}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell id="actions-header" *matHeaderCellDef> Actions </th>
+                <td mat-cell class="actions-column" *matCellDef="let element">
+                    <button *ngIf="loggedEmployee != undefined && loggedEmployee.username === element.username"
+                        mat-stroked-button color="primary" class="leave-btn action-btn"
+                        (click)="leaveCompany(element)">Leave</button>
+                    <button *ngIf="isAdminLogged" mat-stroked-button color="primary" class="edit-btn action-btn"
+                        (click)="editEmployee(element)">Edit</button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+</div>

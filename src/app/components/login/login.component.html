@@ -1,0 +1,45 @@
+<div class="add-modal">
+    <div class="modal-header">
+        <h4 class="modal-title almac-header">Login</h4>
+        <button mat-mini-fab color="primary" (click)="loginDialog.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="options-for-login">
+            <h4>Hints</h4>
+            <p>For logging in as an admin, username is '<strong [cdkCopyToClipboard]="'admin'"
+                    title="Click to copy to clipboard" id="copy-to-clipboard">admin</strong>'</p>
+            <p>For logging in as an employee, the format is '<strong>name.surname</strong>' (eg: <strong
+                    [cdkCopyToClipboard]="displayedUsername" title="Click to copy to clipboard"
+                    id="copy-to-clipboard">{{displayedUsername}}</strong>)</p>
+            <p>Password for both cases is '<strong id="copy-to-clipboard" [cdkCopyToClipboard]="'password'"
+                    title="Click to copy to clipboard">password</strong>'</p>
+        </div>
+
+        <form class="admin-form" [formGroup]="loginForm">
+            <div class="admin-fields">
+                <span class="invalid-entry" *ngIf="invalidUsername">Invalid username</span>
+                <mat-form-field appearance="outline" class="username-field field" color="primary">
+                    <mat-label>Username</mat-label>
+                    <input matInput class="field-input" formControlName="username" required>
+                    <mat-hint *ngIf="!username?.value">Enter your username</mat-hint>
+                </mat-form-field>
+                <span class="invalid-entry" *ngIf="invalidPassword">Invalid password</span>
+                <mat-form-field appearance="outline" class="password-field field" color="primary">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'"
+                        formControlName="password" required (keydown.enter)="logIn()">
+                    <mat-icon color="primary" matSuffix style="cursor: pointer;" (click)="hide = !hide">
+                        {{hide ? 'visibility_off' : 'visibility'}}
+                    </mat-icon>
+                    <mat-hint *ngIf="!password?.value">Enter your password</mat-hint>
+                </mat-form-field>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button mat-stroked-button color="primary" class="login-btn" (click)="logIn()">Login</button>
+    </div>
+</div>
